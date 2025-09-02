@@ -3,15 +3,24 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using System.ComponentModel;
 
 public class DishMinigame : MonoBehaviour
 {
     [SerializeField] Transform plateHierarchy;
+    [Description("Objeto que é pai dos pratos")]
+
     [SerializeField] List<Transform> plates;
+
     [SerializeField] Transform platePlace;
+    [Description("Lugar onde o prato vai ficar na frente do jogador")]
     [SerializeField] Transform cleanPlatePlace;
+    [Description("Lugar onde o prato vai ficar quando for limpo")]
+
+    [SerializeField] Plate activePlate;
     CameraLock camLock;
     float stackOffset = 0;
+    
     bool canClick = false;
     void Start()
     {
@@ -26,7 +35,7 @@ public class DishMinigame : MonoBehaviour
         print(lastPlate.name);
         lastPlate.transform.DOMove(platePlace.position, 0.25f);
         lastPlate.transform.DORotateQuaternion(platePlace.rotation, 0.25f);
-        canClick = true;
+        activePlate = lastPlate.GetComponent<Plate>();
     }
     private void Update()
     {

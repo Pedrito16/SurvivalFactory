@@ -46,6 +46,7 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
     float stopBounce;
     float leanAngle;
 
+    public static bool canMove = true;
     void Awake()
     {
         if (controller == null) controller = GetComponent<CharacterController>();
@@ -57,6 +58,7 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
 
     void Update()
     {
+        if (!canMove) return;
         Look();
         Move();
         CameraEffects();

@@ -33,6 +33,7 @@ public class HorrorFPSController : MonoBehaviour
     float bobTimer;
     Vector3 camLocalStart;
 
+    public static bool canMove = true;
     void Awake()
     {
         if (controller == null) controller = GetComponent<CharacterController>();
@@ -44,6 +45,7 @@ public class HorrorFPSController : MonoBehaviour
 
     void Update()
     {
+        if(!canMove) return;
         Look();
         Move();
         BobAndBreath();

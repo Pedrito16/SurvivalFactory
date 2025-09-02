@@ -24,6 +24,6 @@ public class DishWasherMinigame : MonoBehaviour
     {
         Camera.main.transform.position = camLock.position;
         Camera.main.fieldOfView = newFov;
-        HorrorFPSController.canMove = false;
+        HorrorPlayerControllerJuicy.canMove = false;
     }
 }

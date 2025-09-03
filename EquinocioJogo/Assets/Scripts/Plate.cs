@@ -2,17 +2,35 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour
 {
+    //Material material;
+    [SerializeField] MeshRenderer sujeiraRenderer;
     public float timeToWash = 5;
     bool oneTime = false;
+    DishMinigame minigame;
+    float time = 0;
+    private void Start()
+    { 
+       //material = GetComponent<Renderer>().material;
+        minigame = DishMinigame.instance;
+    }
+    private void OnMouseDown()
+    {
+        minigame.particlePosition.GetComponent<ParticleSystem>().Play();   
+    }
     private void OnMouseDrag()
     {
-        print("to lavando ui ui ui");
+        Color alpha = sujeiraRenderer.material.color;
+        alpha.a = timeToWash / 5;
+        sujeiraRenderer.material.color = alpha;
+
         timeToWash -= Time.deltaTime;
 
-        DishMinigame.instance.PArticleSpawn();
+        //material.SetFloat("_TotalTime", timeToWash / 5); //para gradiente
+
+        minigame.PArticleSpawn();
         if(timeToWash <= 0 && !oneTime)
         {
-            DishMinigame.instance.DevolverPrato();
+            minigame.DevolverPrato();
             oneTime = true;
         }
     }

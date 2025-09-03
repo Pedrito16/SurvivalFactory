@@ -17,11 +17,16 @@ public class DishMinigame : MonoBehaviour
     [SerializeField] Transform cleanPlatePlace;
     [Description("Lugar onde o prato vai ficar quando for limpo")]
 
-    [SerializeField] Plate activePlate;
+    [SerializeField] Transform particlePosition;
+    [SerializeField] LayerMask plateLayer;
     CameraLock camLock;
     float stackOffset = 0;
-    
     bool canClick = false;
+    public static DishMinigame instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         camLock = GetComponent<CameraLock>();
@@ -35,16 +40,8 @@ public class DishMinigame : MonoBehaviour
         print(lastPlate.name);
         lastPlate.transform.DOMove(platePlace.position, 0.25f);
         lastPlate.transform.DORotateQuaternion(platePlace.rotation, 0.25f);
-        activePlate = lastPlate.GetComponent<Plate>();
     }
-    private void Update()
-    {
-        if(canClick && Input.GetMouseButtonDown(0))
-        {
-           DevolverPrato();
-        }
-    }
-    void DevolverPrato()
+    public void DevolverPrato()
     {
         stackOffset += 0.05f;
 
@@ -56,5 +53,21 @@ public class DishMinigame : MonoBehaviour
         lastPlate.transform.DORotateQuaternion(cleanPlatePlace.rotation, 0.25f).OnComplete(() => canClick = false);
         plates.RemoveAt(0);
         Invoke("PassarPrato", 0.5f);
+    }
+    public void PArticleSpawn()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, plateLayer))
+        {
+            particlePosition.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + 0.1f);
+            particlePosition.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        }
+
+        //codigo velho:
+        //float cleanPlatePosZ = Vector3.Distance(Camera.main.transform.position, cleanPlatePlace.position);
+        //Vector3 mousePos = Input.mousePosition;
+        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        //particlePosition.position = worldPos;
     }
 }

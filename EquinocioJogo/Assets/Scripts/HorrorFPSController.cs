@@ -47,8 +47,10 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
     float leanAngle;
 
     public static bool canMove = true;
+    public static HorrorPlayerControllerJuicy instance;
     void Awake()
     {
+        instance = this;
         if (controller == null) controller = GetComponent<CharacterController>();
         if (cameraPivot == null) cameraPivot = Camera.main.transform;
         camStartPos = cameraPivot.localPosition;

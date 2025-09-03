@@ -21,7 +21,6 @@ public class DishMinigame : MonoBehaviour
     [SerializeField] LayerMask plateLayer;
     CameraLock camLock;
     float stackOffset = 0;
-    bool canClick = false;
     public static DishMinigame instance;
     private void Awake()
     {
@@ -31,8 +30,18 @@ public class DishMinigame : MonoBehaviour
     {
         camLock = GetComponent<CameraLock>();
         camLock.onLock.AddListener(PassarPrato);
-        plates = plateHierarchy.GetComponentsInChildren<Transform>().ToList();
+
+        foreach (Transform child in plateHierarchy)
+        {
+            plates.Add(child);
+        }
+
+        camLock.ConditionToActivate = CheckIfCanDoMinigame();
         plates.Remove(plateHierarchy);
+    }
+    public bool CheckIfCanDoMinigame()
+    {
+        return plates.Count > 0;
     }
     void PassarPrato()
     {
@@ -50,8 +59,14 @@ public class DishMinigame : MonoBehaviour
         Vector3 plateNewPos = new Vector3(cleanPlatePos.x, cleanPlatePos.y + stackOffset, cleanPlatePos.z);
 
         lastPlate.transform.DOMove(plateNewPos, 0.25f);
-        lastPlate.transform.DORotateQuaternion(cleanPlatePlace.rotation, 0.25f).OnComplete(() => canClick = false);
+        lastPlate.transform.DORotateQuaternion(cleanPlatePlace.rotation, 0.25f);
         plates.RemoveAt(0);
+        if (plates.Count <= 0)
+        {
+            camLock.UnlockCamera();
+            Destroy(camLock);
+            return; 
+        }
         Invoke("PassarPrato", 0.5f);
     }
     public void PArticleSpawn()

@@ -4,20 +4,25 @@ using System.Collections;
 using DG.Tweening;
 public class CameraLock : MonoBehaviour
 {
+    [SerializeField] Transform originalPos;
     [SerializeField] Transform camLock;
     [SerializeField] float originalFOV;
     [SerializeField] float newFov = 60;
+    public bool ConditionToActivate;
     public UnityEvent onLock;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            LockCamera();
+            if(ConditionToActivate)
+                LockCamera();
+            else print("Condition to activate not met");
         }
     }
     void LockCamera()
     {
         Camera camera = Camera.main;
+        originalPos = camera.transform;
 
         StartCoroutine(MoveTo(camera.transform, camLock, 0.25f));
         camera.transform.DORotate(camLock.eulerAngles, 0.25f);
@@ -27,6 +32,15 @@ public class CameraLock : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         onLock?.Invoke();
+    }
+    public void UnlockCamera()
+    {
+        Camera camera = Camera.main;
+        StartCoroutine(MoveTo(camera.transform, originalPos, 0.25f));
+        camera.fieldOfView = originalFOV;
+        HorrorPlayerControllerJuicy.canMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     IEnumerator MoveTo(Transform initial, Transform final, float duration)
     {

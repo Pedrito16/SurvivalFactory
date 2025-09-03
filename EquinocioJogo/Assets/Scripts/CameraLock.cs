@@ -24,6 +24,8 @@ public class CameraLock : MonoBehaviour
         camera.fieldOfView = newFov;
 
         HorrorPlayerControllerJuicy.canMove = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         onLock?.Invoke();
     }
     IEnumerator MoveTo(Transform initial, Transform final, float duration)

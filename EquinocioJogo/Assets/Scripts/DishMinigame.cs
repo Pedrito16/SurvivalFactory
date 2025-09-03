@@ -17,7 +17,7 @@ public class DishMinigame : MonoBehaviour
     [SerializeField] Transform cleanPlatePlace;
     [Description("Lugar onde o prato vai ficar quando for limpo")]
 
-    [SerializeField] Transform particlePosition;
+    [SerializeField] public Transform particlePosition;
     [SerializeField] LayerMask plateLayer;
     CameraLock camLock;
     float stackOffset = 0;

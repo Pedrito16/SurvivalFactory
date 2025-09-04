@@ -164,15 +164,24 @@ MonoBehaviour:
   gravity: -20
   jumpForce: 5
   allowRun: 1
-  headBobAmplitudeWalk: 0.025
-  headBobFrequencyWalk: 9
-  headBobAmplitudeRun: 0.04
-  headBobFrequencyRun: 13
-  idleBreathAmplitude: 0.012
-  idleBreathFrequency: 1.1
-  mouseSensitivity: 120
+  walkBobAmp: 0.035
+  walkBobFreq: 8
+  runBobAmp: 0.07
+  runBobFreq: 13
+  idleBreathAmp: 0.02
+  idleBreathFreq: 1.1
+  idleSwayAmp: 0.01
+  idleSwayFreq: 0.6
+  swayAmount: 0.02
+  swaySpeed: 4
+  sideLeanAmp: 4
+  stopBounceAmp: 0.06
+  stopBounceDecay: 6
+  sensitivity: 120
   minPitch: -80
   maxPitch: 80
+  canMove: 1
+  camToUse: {fileID: 0}
 --- !u!143 &8808164813709125555
 CharacterController:
   m_ObjectHideFlags: 0

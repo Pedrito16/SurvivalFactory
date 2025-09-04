@@ -47,6 +47,7 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
     float leanAngle;
 
     public bool canMove = true;
+    [SerializeField] Camera camToUse;
     public static HorrorPlayerControllerJuicy instance;
     void Awake()
     {
@@ -61,6 +62,17 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
     void Update()
     {
         if (!canMove) return;
+
+        Ray ray = camToUse.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(camToUse.transform.position, ray.direction * 6f, Color.red, 0.1f);
+        if (Physics.Raycast(ray, out RaycastHit hit, 6f))
+        {
+            if (hit.collider.TryGetComponent(out IInteractable interactable) && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                hit.collider.GetComponent<IInteractable>()?.Interact();
+            }
+        }
+
         Look();
         Move();
         CameraEffects();

@@ -1,22 +1,29 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using TMPro;
+using System;
 public class WriteText : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI textToWriteInUI;
+    public static WriteText instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
-        WriteLine("HAmburguer comida comidinha delicinha");
+        
     }
     public void WriteLine(string text)
     {
         StartCoroutine(Escrever(text));
     }
-    public void WriteDialogue(string[] dialogueToWrite, float timeBetweenTexts)
+    public void WriteDialogue(string[] dialogueToWrite, float timeBetweenTexts, Action onDialogueEnd)
     {
-        StartCoroutine(WriteArray(dialogueToWrite, timeBetweenTexts));
+        StartCoroutine(WriteArray(dialogueToWrite, timeBetweenTexts, onDialogueEnd));
     }
-    IEnumerator WriteArray(string[] dialogueToWrite, float timeBetweenTexts)
+    IEnumerator WriteArray(string[] dialogueToWrite, float timeBetweenTexts, Action onDialogueEnd = null)
     {
         for (int i = 0; i < dialogueToWrite.Length; i++)
         {
@@ -27,7 +34,9 @@ public class WriteText : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);
             }
             yield return new WaitForSeconds(timeBetweenTexts);
+            textToWriteInUI.text = "";
         }
+        onDialogueEnd?.Invoke();
     }
     IEnumerator Escrever (string text)
     {

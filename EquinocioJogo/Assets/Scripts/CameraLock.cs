@@ -40,6 +40,7 @@ public class CameraLock : MonoBehaviour
     {
         Camera camera = Camera.main;
         StartCoroutine(MoveTo(camera.transform, originalPos, 0.5f));
+        camera.transform.rotation = Quaternion.Euler(Vector3.zero);
         camera.fieldOfView = originalFOV;
         HorrorPlayerControllerJuicy.instance.canMove = true;
         Cursor.lockState = CursorLockMode.Locked;

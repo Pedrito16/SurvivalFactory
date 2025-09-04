@@ -20,7 +20,7 @@ public class QuestController : MonoBehaviour
         this.quest = quest;
         this.demonWalkPos = demonWalkPos;
         if (quest.dialogueText.Length > 0)
-            WriteText.instance.WriteDialogue(quest.dialogueText, 3, SetOthers);
+            WriteText.instance.WriteDialogue(quest.dialogueText, 2, SetOthers);
     }
     public void SetOthers()
     {

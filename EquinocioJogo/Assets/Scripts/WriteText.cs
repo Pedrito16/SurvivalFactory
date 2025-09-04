@@ -31,7 +31,7 @@ public class WriteText : MonoBehaviour
             for (int j = 0; j < letters.Length; j++)
             {
                 textToWriteInUI.text += letters[j];
-                yield return new WaitForSeconds(0.025f);
+                yield return new WaitForSeconds(0.04f);
             }
             yield return new WaitForSeconds(timeBetweenTexts);
             textToWriteInUI.text = "";

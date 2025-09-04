@@ -73,13 +73,18 @@ public class DishMinigame : MonoBehaviour
         {
             isOnMinigame = false;
             camLock.UnlockCamera();
-            Destroy(camLock);
+
+            // Resetar rotação do player/câmera para garantir que volta certinho
+            cameraNormal.transform.localRotation = Quaternion.identity;
+            cameraNormal.transform.rotation = Quaternion.Euler(0, cameraNormal.transform.rotation.eulerAngles.y, 0);
+
             Destroy(particlePosition.gameObject);
             Quests.instance.PassQuest();
-            return; 
+            return;
         }
         Invoke("PassarPrato", 0.5f);
     }
+
     public void PArticleSpawn()
     {
             if (particlePosition == null) return;

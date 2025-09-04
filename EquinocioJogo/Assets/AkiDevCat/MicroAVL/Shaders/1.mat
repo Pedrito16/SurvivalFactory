@@ -42,13 +42,13 @@ Material:
     - _BlinkingAmplitude: 0.5
     - _ENABLE_BLINKING: 0
     - _ENABLE_HDR_CORRECTION: 1
-    - _Intensity: 0.68
+    - _Intensity: 0.46
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RampPower: 0.39
     - _Scattering: 283.17
     m_Colors:
-    - _Color: {r: 0.5629354, g: 0.5613208, b: 1, a: 1}
+    - _Color: {r: 0.40113407, g: 0.38803846, b: 0.754717, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3586785374684740695

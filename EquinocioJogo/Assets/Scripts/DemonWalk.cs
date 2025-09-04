@@ -25,12 +25,16 @@ public class DemonWalk : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = true;
     }
     private void Update()
     {
-        float distance = Vector3.Distance(transform.position, location != null ? location.position : transform.position);
-        anim.SetFloat("Movement",agent.velocity.magnitude);
-        if (state == DemonState.Walking && location != null)
+        if(location == null) return;
+        float distance = Vector3.Distance(transform.position, location.position);
+
+        anim.SetFloat("Movement", distance);
+
+        if (state == DemonState.Walking)
         {
             agent.SetDestination(location.position);
             if(transform.position == location.position && !isOnPosition)

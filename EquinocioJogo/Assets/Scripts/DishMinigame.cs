@@ -32,14 +32,15 @@ public class DishMinigame : MonoBehaviour
         camLock = GetComponent<CameraLock>();
         camLock.onLock.AddListener(PassarPrato);
         camLock.onLock.AddListener(OnLock);
-
+        plates.Remove(plateHierarchy);
+    }
+    public void ActivateMinigame()
+    {
         foreach (Transform child in plateHierarchy)
         {
             plates.Add(child);
         }
-
         camLock.ConditionToActivate = CheckIfCanDoMinigame();
-        plates.Remove(plateHierarchy);
     }
     void OnLock()
     {
@@ -74,6 +75,7 @@ public class DishMinigame : MonoBehaviour
             camLock.UnlockCamera();
             Destroy(camLock);
             Destroy(particlePosition.gameObject);
+            Quests.instance.PassQuest();
             return; 
         }
         Invoke("PassarPrato", 0.5f);

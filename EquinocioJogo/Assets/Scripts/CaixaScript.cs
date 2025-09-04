@@ -37,6 +37,7 @@ public class CaixaScript : MonoBehaviour, IInteractable
     void WhenBoxOpen()
     {
         Quests.instance.PassQuest();
+        DishMinigame.instance.ActivateMinigame();
     }
     void Update()
     {

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
-public class NextScene : MonoBehaviour
+public class NextScene : MonoBehaviour, IInteractable
 {
     [SerializeField] private Image fade;
 
@@ -15,9 +15,14 @@ public class NextScene : MonoBehaviour
 
     private IEnumerator ChangeSceneRoutine(string sceneName)
     {
+        if(fade == null)
+        {
+            SceneManager.LoadScene(sceneName);
+            yield break;
+        }
         fade.DOFade(1, 2); // Faz o fade out em 2 segundos
         yield return new WaitForSeconds(3f); // Espera 3 segundos
-        SceneManager.LoadScene(sceneName); // Troca de cena
+        SceneManager.LoadScene(sceneName);
     }
 
     public void CloseGame()
@@ -33,5 +38,10 @@ public class NextScene : MonoBehaviour
     public void FadeOut()
     {
         fade.DOFade(1, 2);
+    }
+
+    public void Interact()
+    {
+        StartCoroutine(ChangeSceneRoutine("DriveScene"));
     }
 }

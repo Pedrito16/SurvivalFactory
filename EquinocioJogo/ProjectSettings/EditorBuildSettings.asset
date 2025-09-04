@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 8ea60bd579d5479428b7b03dd19d1e7d
+  - enabled: 1
+    path: Assets/Scenes/TesteLostaad.unity
+    guid: 688d44e3d3f64cb479f67af79ac1d6c7
+  - enabled: 1
     path: Assets/Scenes/DriveScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

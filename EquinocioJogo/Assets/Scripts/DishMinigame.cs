@@ -2,7 +2,6 @@ using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using System.ComponentModel;
 
 public class DishMinigame : MonoBehaviour
@@ -19,6 +18,8 @@ public class DishMinigame : MonoBehaviour
 
     [SerializeField] public Transform particlePosition;
     [SerializeField] LayerMask plateLayer;
+    [SerializeField] Camera cameraNormal;
+    public bool isOnMinigame;
     CameraLock camLock;
     float stackOffset = 0;
     public static DishMinigame instance;
@@ -30,6 +31,7 @@ public class DishMinigame : MonoBehaviour
     {
         camLock = GetComponent<CameraLock>();
         camLock.onLock.AddListener(PassarPrato);
+        camLock.onLock.AddListener(OnLock);
 
         foreach (Transform child in plateHierarchy)
         {
@@ -39,6 +41,10 @@ public class DishMinigame : MonoBehaviour
         camLock.ConditionToActivate = CheckIfCanDoMinigame();
         plates.Remove(plateHierarchy);
     }
+    void OnLock()
+    {
+        isOnMinigame = true;
+    }
     public bool CheckIfCanDoMinigame()
     {
         return plates.Count > 0;
@@ -47,8 +53,8 @@ public class DishMinigame : MonoBehaviour
     {
         Transform lastPlate = plates[0];
         print(lastPlate.name);
-        lastPlate.transform.DOMove(platePlace.position, 0.25f);
-        lastPlate.transform.DORotateQuaternion(platePlace.rotation, 0.25f);
+        lastPlate.transform.DOMove(platePlace.position, 0.5f);
+        lastPlate.transform.DORotateQuaternion(platePlace.rotation, 0.5f);
     }
     public void DevolverPrato()
     {
@@ -58,23 +64,28 @@ public class DishMinigame : MonoBehaviour
         Vector3 cleanPlatePos = cleanPlatePlace.position;
         Vector3 plateNewPos = new Vector3(cleanPlatePos.x, cleanPlatePos.y + stackOffset, cleanPlatePos.z);
 
-        lastPlate.transform.DOMove(plateNewPos, 0.25f);
-        lastPlate.transform.DORotateQuaternion(cleanPlatePlace.rotation, 0.25f);
+        lastPlate.transform.DOMove(plateNewPos, 0.5f);
+        lastPlate.transform.DORotateQuaternion(cleanPlatePlace.rotation, 0.5f);
         plates.RemoveAt(0);
+
         if (plates.Count <= 0)
         {
+            isOnMinigame = false;
             camLock.UnlockCamera();
             Destroy(camLock);
+            Destroy(particlePosition.gameObject);
             return; 
         }
         Invoke("PassarPrato", 0.5f);
     }
     public void PArticleSpawn()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (particlePosition == null) return;
+        Ray ray = cameraNormal.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, plateLayer))
         {
+            Debug.DrawRay(cameraNormal.transform.position, ray.direction * 2f, Color.red, 0.1f);
             particlePosition.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z + 0.1f);
             particlePosition.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         }

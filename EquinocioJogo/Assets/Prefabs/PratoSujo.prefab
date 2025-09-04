@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 6069804687778930801}
   - component: {fileID: 1410351307681401939}
   - component: {fileID: 605867584930677711}
-  m_Layer: 0
+  - component: {fileID: 8397353879927003486}
+  - component: {fileID: 5320107646775607243}
+  m_Layer: 6
   m_Name: Sujo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 2756005323439241538}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 2.25, z: 0}
-  m_LocalScale: {x: 10670.446, y: 10670.446, z: 914.17926}
+  m_LocalPosition: {x: -0, y: 2.82, z: -0.1}
+  m_LocalScale: {x: 9966.943, y: 10087.733, z: 352.82748}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5309427857564852691}
@@ -86,6 +88,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8397353879927003486
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756005323439241538}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8314571269056883277, guid: b06e458bd44d0cf4083a6c5063a77cfd, type: 3}
+--- !u!114 &5320107646775607243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756005323439241538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4e1d860ef65bf4fb096d72934678ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sujeiraRenderer: {fileID: 605867584930677711}
+  timeToWash: 5
 --- !u!1 &3979631492513414913
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5309427857564852691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PratoSujo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,15 +148,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3979631492513414913}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.034487374, y: 0.018, z: -0.047}
-  m_LocalScale: {x: 0.002538583, y: 0.051661193, z: 0.0032894476}
+  m_LocalScale: {x: 0.00055441767, y: 0.014354394, z: 0.0013967698}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8212982781278039622}
   - {fileID: 6069804687778930801}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98, y: 0, z: 0}
 --- !u!1 &7388102623929183191
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +168,8 @@ GameObject:
   - component: {fileID: 8212982781278039622}
   - component: {fileID: 1163187782888904800}
   - component: {fileID: 896459378413132504}
-  m_Layer: 0
+  - component: {fileID: 6037102206833678446}
+  m_Layer: 6
   m_Name: Prato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 7388102623929183191}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 1.84, z: 0}
+  m_LocalPosition: {x: -0, y: 2.83, z: 0}
   m_LocalScale: {x: 10160.682, y: 10160.682, z: 431.23248}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -205,3 +244,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6037102206833678446
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7388102623929183191}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2124705421725058983, guid: b06e458bd44d0cf4083a6c5063a77cfd, type: 3}

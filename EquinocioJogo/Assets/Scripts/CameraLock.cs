@@ -14,8 +14,11 @@ public class CameraLock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(ConditionToActivate)
+            if (ConditionToActivate)
+            {
+                print("Colidiu e tem condição");
                 LockCamera();
+            }
             else print("Condition to activate not met");
         }
     }
@@ -24,8 +27,8 @@ public class CameraLock : MonoBehaviour
         Camera camera = Camera.main;
         originalPos = camera.transform;
 
-        StartCoroutine(MoveTo(camera.transform, camLock, 0.25f));
-        camera.transform.DORotate(camLock.eulerAngles, 0.25f);
+        StartCoroutine(MoveTo(camera.transform, camLock, 0.5f));
+        camera.transform.DORotate(camLock.eulerAngles, 0.5f);
         camera.fieldOfView = newFov;
 
         HorrorPlayerControllerJuicy.canMove = false;
@@ -36,7 +39,7 @@ public class CameraLock : MonoBehaviour
     public void UnlockCamera()
     {
         Camera camera = Camera.main;
-        StartCoroutine(MoveTo(camera.transform, originalPos, 0.25f));
+        StartCoroutine(MoveTo(camera.transform, originalPos, 0.5f));
         camera.fieldOfView = originalFOV;
         HorrorPlayerControllerJuicy.canMove = true;
         Cursor.lockState = CursorLockMode.Locked;

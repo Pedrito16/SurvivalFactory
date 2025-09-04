@@ -7,7 +7,6 @@ public class Plate : MonoBehaviour
     public float timeToWash = 5;
     bool oneTime = false;
     DishMinigame minigame;
-    float time = 0;
     private void Start()
     { 
        //material = GetComponent<Renderer>().material;
@@ -19,6 +18,8 @@ public class Plate : MonoBehaviour
     }
     private void OnMouseDrag()
     {
+        print("dragando");
+        if (!minigame.isOnMinigame) return;
         Color alpha = sujeiraRenderer.material.color;
         alpha.a = timeToWash / 5;
         sujeiraRenderer.material.color = alpha;

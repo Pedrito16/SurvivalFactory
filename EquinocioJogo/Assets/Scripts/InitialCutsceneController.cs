@@ -17,7 +17,8 @@ public class InitialCutsceneController : MonoBehaviour
     public void ReactivePlayer()
     {
         HorrorPlayerControllerJuicy.canMove = true;
-        Camera.main.transform.rotation = initialRotation;
+        Camera.main.transform.rotation = Quaternion.Euler(Vector3.zero);
+        Camera.main.transform.position = Vector3.zero;
         Destroy(director);
     }
 }

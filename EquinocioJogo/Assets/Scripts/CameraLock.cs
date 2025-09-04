@@ -31,7 +31,7 @@ public class CameraLock : MonoBehaviour
         camera.transform.DORotate(camLock.eulerAngles, 0.5f);
         camera.fieldOfView = newFov;
 
-        HorrorPlayerControllerJuicy.canMove = false;
+        HorrorPlayerControllerJuicy.instance.canMove = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         onLock?.Invoke();
@@ -41,7 +41,7 @@ public class CameraLock : MonoBehaviour
         Camera camera = Camera.main;
         StartCoroutine(MoveTo(camera.transform, originalPos, 0.5f));
         camera.fieldOfView = originalFOV;
-        HorrorPlayerControllerJuicy.canMove = true;
+        HorrorPlayerControllerJuicy.instance.canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

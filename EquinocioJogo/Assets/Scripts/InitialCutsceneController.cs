@@ -8,7 +8,8 @@ public class InitialCutsceneController : MonoBehaviour
     void Start()
     {
         initialRotation = Camera.main.transform.rotation;
-        HorrorPlayerControllerJuicy.canMove = false;
+        Camera.main.transform.rotation = Quaternion.Euler(Vector3.zero);
+        HorrorPlayerControllerJuicy.instance.canMove = false;
     }
     void Update()
     {
@@ -16,7 +17,7 @@ public class InitialCutsceneController : MonoBehaviour
     }
     public void ReactivePlayer()
     {
-        HorrorPlayerControllerJuicy.canMove = true;
+        HorrorPlayerControllerJuicy.instance.canMove = true;
         Camera.main.transform.rotation = Quaternion.Euler(Vector3.zero);
         Camera.main.transform.position = Vector3.zero;
         Destroy(director);

@@ -46,7 +46,7 @@ public class HorrorPlayerControllerJuicy : MonoBehaviour
     float stopBounce;
     float leanAngle;
 
-    public static bool canMove = true;
+    public bool canMove = true;
     public static HorrorPlayerControllerJuicy instance;
     void Awake()
     {

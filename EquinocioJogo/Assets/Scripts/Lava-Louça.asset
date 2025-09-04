@@ -15,5 +15,10 @@ MonoBehaviour:
   newPos: {fileID: 0}
   questText: "V\xE1 lavar a lou\xE7a"
   dialogueText:
-  - "Eu sou o capeta, vai lavar a lou\xE7a"
-  - "precisamos ver esse equin\xF3cio"
+  - "Capeta: Finalmente\u2026 achei voc\xEA."
+  - "Voc\xEA: \u2026o qu\xEA? Quem \xE9 voc\xEA?"
+  - "Capeta: Eu sou aquele que espera todo equin\xF3cio\u2026 e desta vez quero ver
+    o espet\xE1culo do c\xE9u, daqui da sua casa."
+  - "Voce: Isso t\xE1 ficando muito estranho\u2026"
+  - "Capeta: Mas antes\u2026 lave a lou\xE7a. Nada de ritual pode come\xE7ar numa
+    cozinha imunda."

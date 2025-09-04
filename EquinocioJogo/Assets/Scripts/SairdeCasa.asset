@@ -15,6 +15,7 @@ MonoBehaviour:
   newPos: {fileID: 0}
   questText: "V\xE1 para fora"
   dialogueText:
-  - muito bem!
-  - "bem na hora do equin\xF3cio"
-  - vamos para fora
+  - "Capeta: Voc\xEA devia se orgulhar. Nem todos s\xE3o escolhidos para ver o alinhamento.
+    \xC9 bonito, mas s\xF3 os fortes aguentam"
+  - "Voc\xEA: E se eu n\xE3o quiser participar disso?"
+  - "Capeta: J\xE1 est\xE1 participando. Desde o momento em que abriu a porta."

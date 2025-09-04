@@ -15,6 +15,6 @@ MonoBehaviour:
   newPos: {fileID: 0}
   questText: Ligue a TV
   dialogueText:
-  - acho bom
-  - agora preciso que ligue a tv
-  - "para nos preparar pro equin\xF3cio"
+  - "Capeta: Bom..Agora! Ligue a TV. Coloque no canal\u2026 voc\xEA sabe qual."
+  - "Voc\xEA: Qual \xE9 o seu canal favorito\u2026?"
+  - "Capeta: Aquele que nunca tem fim\u2026 Onde h\xE1 dor e sofrimento"

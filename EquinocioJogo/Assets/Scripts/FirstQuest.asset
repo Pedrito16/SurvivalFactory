@@ -15,5 +15,5 @@ MonoBehaviour:
   newPos: {fileID: 0}
   questText: Abrir a caixa
   dialogueText:
-  - Parece que minha encomenda chegou
-  - "vou l\xE1 ver"
+  - "Voc\xEA: Estranho\u2026 n\xE3o pedi nada\u2026"
+  - "Voc\xEA: Ser\xE1 que a vizinha mandou deixar aqui?"
